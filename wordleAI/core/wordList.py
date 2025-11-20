@@ -1,14 +1,18 @@
+from pathlib import Path
 
+def loadWordList(filePath: str | Path = None):
+    core_dir = Path(__file__).resolve().parent
 
-def loadWordList(filePath: str = None):
     if filePath is None:
-        # Default to data/Possiblewords.txt relative to project root
-        filePath = "data" / "Possiblewords.txt"
-    
-    words = []
+        filePath = core_dir / "data" / "Possiblewords.txt"
+    else:
+        filePath = core_dir / filePath
+
     with open(filePath, "r") as file:
-        for line in file:
-            word = line.strip().lower()
-            if len(word) == 5:
-                words.append(word)
+        words = [
+            line.strip().lower()
+            for line in file
+            if len(line.strip()) == 5
+        ]
+
     return words
