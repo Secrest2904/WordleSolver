@@ -2,9 +2,11 @@
 
 import random
 import tkinter as tk
+import sys
+sys.path.append("..")
 
-from wordleAI.core.wordList import loadWordList
-from wordleAI.core.feedback import computeFeedback, FeedbackColor
+from core.wordList import loadWordList
+from core.feedback import computeFeedback, FeedbackColor
 
 
 class WordleGameUI:
